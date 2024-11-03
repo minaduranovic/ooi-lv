@@ -1,0 +1,3 @@
+# minam
+using JuMP;
+
