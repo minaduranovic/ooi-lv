@@ -65,15 +65,21 @@ function rijesi_simplex(A, b, c)
         fja_cilja = tabela[end, ulazna_varijabla]
         tabela[end, :] .-= fja_cilja * tabela[izlazna_varijabla, :]
 
-        println("Tabela nakon iteracije ", it, ":")
+        # println("Tabela nakon iteracije ", it, ":")
+        # println(tabela)
         
-        for row in eachrow(tabela)
-            println(row)
-        end
     end
+
+    x = zeros(n + m)  
+    for i in 1:m
+            x[baza[i]] = tabela[i, end]
+    end
+    Z = -tabela[end, end]  
+
+    return x, Z
+
 end
 
-
-println(rijesi_simplex([0.05 0.01 0.01; 17 18 18], [93; 54803], [20; 19; 19]))
+# println(rijesi_simplex([0.05 0.01 0.01; 17 18 18], [93; 54803], [20; 19; 19]))
 # println(rijesi_simplex([30 16; 14 19; 11 26; 0 1], [22800; 14100; 15950; 550], [800; 1000]))
-println(rijesi_simplex([1 0; 1 -1], [7; 8], [5; 4]))
+# println(rijesi_simplex([1 0; 1 -1], [7; 8], [5; 4]))
