@@ -1,31 +1,33 @@
 function najkraci_put(M)
-    n = size(M, 1)  # Broj čvorova
-    inf = typemax(Int)  # Koristimo najveći mogući broj za beskonačnost
+    n = size(M, 1) 
+    inf = typemax(Int) 
 
-    # Inicijalizacija: Udaljenosti od početnog čvora i prethodni čvorovi
     udaljenosti = [i == 1 ? 0 : inf for i in 1:n]
-    prethodni = [1 for _ in 1:n]  # Svi čvorovi inicijalno "dolaze" iz početnog čvora
+    prethodni = [0 for _ in 1:n] 
 
-    for _ in 1:(n - 1)  # Bellman-Ford algoritam iterira najviše n-1 puta
+    for iteracija in 1:(n - 1)
+        promjena = false  
         for i in 1:n
             for j in 1:n
-                if M[i, j] != 0  # Ako postoji veza između čvorova
+                if M[i, j] != 0 && udaljenosti[i] != inf 
                     nova_udaljenost = udaljenosti[i] + M[i, j]
                     if nova_udaljenost < udaljenosti[j]
                         udaljenosti[j] = nova_udaljenost
-                        prethodni[j] = i
+                        prethodni[j] = i  
+                        promjena = true  
                     end
                 end
             end
         end
+        if !promjena
+            break
+        end
     end
-
-    # Formiranje matrice putevi
-    putevi = hcat(1:n, udaljenosti, prethodni)
+    putevi = hcat(1:n, udaljenosti, [prethodni[i] == 0 ? i : prethodni[i] for i in 1:n])
     return putevi
 end
 
-# Testni primjer
+
 M = [
     0  1  3  0  0  0;
     0  0  2  3  0  0;
