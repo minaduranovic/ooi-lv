@@ -1,5 +1,4 @@
 using JuMP, GLPK;
-#  b)  dodato ogranicenje 
 m = Model(GLPK.Optimizer)
 
 @variable(m, x1>=0)
@@ -22,7 +21,6 @@ value(constraint2)
 
 
 
-#  c)  dodato ogranicenje 
 m = Model(GLPK.Optimizer)
 
 @variable(m, x1>=0)
@@ -30,8 +28,8 @@ m = Model(GLPK.Optimizer)
 
 @objective(m, Max, 3x1+2x2)
 
-@constraint(m, constraint1, x1+2x2<=40)
-@constraint(m, constraint2, 2x1+x2 <= 117)
+@constraint(m, constraint1, x1+2x2<=117)
+@constraint(m, constraint2, 2x1+x2 <= 50)
 
 optimize!(m)
 

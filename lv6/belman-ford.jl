@@ -27,16 +27,17 @@ function najkraci_put(M)
     return putevi
 end
 
+#Testni slučaj iz postavke laboratorijske vježbe
+M = [0 1 3 0 0 0; 0 0 2 3 0 0; 0 0 0 -4 9 0; 0 0 0 0 1 2; 0 0 0 0 0 2; 0 0 0 0 0 0]
+putevi = najkraci_put(M);
+println(putevi)
 
-M = [
-    0  1  3  0  0  0;
-    0  0  2  3  0  0;
-    0  0  0 -4  9  0;
-    0  0  0  0  1  2;
-    0  0  0  0  0  2;
-    0  0  0  0  0  0
-]
+#Testni slučaj iz predavanja 7, strana 33
+M = [0 3 7 4 0 0; 0 0 1 0 1 0; 0 0 0 0 2 3; 0 0 1 0 0 5; 0 0 0 0 0 1; 0 0 0 0 0 0]
+putevi = najkraci_put(M);
+println(putevi)
 
-putevi = najkraci_put(M)
-println("Putevi:")
+#Testni slučaj iz predavanja 7, strana 37
+M = [0 2 10 7 0 0 0; 0 0 0 3 9 0 0; 0 0 0 6 0 6 0; 0 0 0 0 5 8 12; 0 0 0 0 0 1 7; 0 0 0 0 0 0 4; 0 0 0 0 0 0 0]
+putevi = najkraci_put(M);
 println(putevi)
