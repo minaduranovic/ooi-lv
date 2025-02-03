@@ -5,11 +5,11 @@ m = Model(GLPK.Optimizer)
 @variable(m, x1>=0)
 @variable(m, x2>=0)
 
-@objective(m, Min, 0.45x1+0.46x2)
+@objective(m, Max, 150x1+40x2)
 
-@constraint(m, constraint1, 0.25x1+0.15x2<=7.9)
-@constraint(m, constraint2, 0.55x1+0.55x2 == 2.36)
-@constraint(m, constraint3, 0.65x1+0.45x2>=2.36)
+@constraint(m, constraint1, x1<=10)
+@constraint(m, constraint2, x2 <= 27)
+@constraint(m, constraint3, 9x1+4x2<=144)
 
 optimize!(m)
 
